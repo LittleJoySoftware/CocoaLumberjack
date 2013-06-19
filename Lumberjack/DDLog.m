@@ -149,11 +149,10 @@ static unsigned int numProcessors;
 	#else
 		NSString *notificationName = @"NSApplicationWillTerminateNotification";
 	#endif
-		
-		[[NSNotificationCenter defaultCenter] addObserver:self
-		                                         selector:@selector(applicationWillTerminate:)
-		                                             name:notificationName
-		                                           object:nil];
+		NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc addObserver:self selector:@selector(applicationWillTerminate:)
+               name:notificationName
+             object:nil];
 	}
 }
 
