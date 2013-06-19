@@ -52,9 +52,6 @@ static NSString * const SOME_LOG  = @"  LOG";
 //static NSString * const DATE_FORMAT = @"yyyy-MM-dd HH:mm:ss.SSS";
 
 
-@synthesize dateFormatter;
-@synthesize formatString;
-
 /** @name Initialization */
 /**
  assigns the dateFormatter and formatString properties
