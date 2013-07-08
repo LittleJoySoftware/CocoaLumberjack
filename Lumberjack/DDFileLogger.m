@@ -1017,14 +1017,14 @@
 
 - (NSString *)description
 {
-	return [@{@"filePath": self.filePath,
-		@"fileName": self.fileName,
-		@"fileAttributes": self.fileAttributes,
-		@"creationDate": self.creationDate,
-		@"modificationDate": self.modificationDate,
-		@"fileSize": @(self.fileSize),
-		@"age": @(self.age),
-		@"isArchived": @(self.isArchived)} description];
+	return [@{@"filePath": self.filePath == nil ? [NSNull null] : self.filePath,
+            @"fileName": self.fileName == nil ? [NSNull null] : self.fileName,
+            @"fileAttributes": self.fileAttributes == nil ? [NSNull null] : self.fileAttributes,
+            @"creationDate": self.creationDate == nil ? [NSNull null] : self.creationDate,
+            @"modificationDate": self.modificationDate == nil ? [NSNull null] : self.modificationDate,
+            @"fileSize": @(self.fileSize),
+            @"age": @(self.age),
+            @"isArchived": @(self.isArchived)} description];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
