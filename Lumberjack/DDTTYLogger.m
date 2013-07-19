@@ -671,7 +671,7 @@ static DDTTYLogger *sharedInstance;
 {
 	#if TARGET_OS_IPHONE
 	
-	// iOS
+	// iOS - requires iOS 5.0+
 	
 	BOOL done = NO;
 	
@@ -680,7 +680,9 @@ static DDTTYLogger *sharedInstance;
 		done = [color getRed:rPtr green:gPtr blue:bPtr alpha:NULL];
 	}
 	
-	if (!done)
+	/*
+   
+  if (!done)
 	{
 		// The method getRed:green:blue:alpha: was only available starting iOS 5.
 		// So in iOS 4 and earlier, we have to jump through hoops.
@@ -700,6 +702,7 @@ static DDTTYLogger *sharedInstance;
 		CGContextRelease(context);
 		CGColorSpaceRelease(rgbColorSpace);
 	}
+   */
 	
 	#else
 	
