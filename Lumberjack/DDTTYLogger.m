@@ -13,6 +13,11 @@
  * https://github.com/robbiehanson/CocoaLumberjack/wiki/GettingStarted
 **/
 
+#ifndef __IPHONE_5_0
+#warning "This file must be compiled with in iOS SDK 5.0 or later."
+#endif
+
+
 #if ! __has_feature(objc_arc)
 #warning This file must be compiled with ARC. Use -fobjc-arc flag (or convert project to ARC).
 #endif
@@ -673,37 +678,8 @@ static DDTTYLogger *sharedInstance;
 	
 	// iOS - requires iOS 5.0+
 	
-	BOOL done = NO;
-	
-	if ([color respondsToSelector:@selector(getRed:green:blue:alpha:)])
-	{
-		done = [color getRed:rPtr green:gPtr blue:bPtr alpha:NULL];
-	}
-	
-	/*
-   
-  if (!done)
-	{
-		// The method getRed:green:blue:alpha: was only available starting iOS 5.
-		// So in iOS 4 and earlier, we have to jump through hoops.
+	[color getRed:rPtr green:gPtr blue:bPtr alpha:NULL];
 		
-		CGColorSpaceRef rgbColorSpace = CGColorSpaceCreateDeviceRGB();
-		
-		unsigned char pixel[4];
-		CGContextRef context = CGBitmapContextCreate(&pixel, 1, 1, 8, 4, rgbColorSpace, kCGImageAlphaNoneSkipLast);
-		
-		CGContextSetFillColorWithColor(context, [color CGColor]);
-		CGContextFillRect(context, CGRectMake(0, 0, 1, 1));
-		
-		if (rPtr) { *rPtr = pixel[0] / 255.0f; }
-		if (gPtr) { *gPtr = pixel[1] / 255.0f; }
-		if (bPtr) { *bPtr = pixel[2] / 255.0f; }
-		
-		CGContextRelease(context);
-		CGColorSpaceRelease(rgbColorSpace);
-	}
-   */
-	
 	#else
 	
 	// Mac OS X
@@ -1382,7 +1358,7 @@ static DDTTYLogger *sharedInstance;
 		mask = aMask;
 		context = ctxt;
 		
-		CGFloat r, g, b;
+		CGFloat r, g, b = 0;
 		
 		if (fgColor)
 		{
