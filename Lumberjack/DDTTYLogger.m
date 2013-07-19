@@ -1280,7 +1280,7 @@ static DDTTYLogger *sharedInstance;
 						   (long)components.minute,
 						   (long)components.second, milliseconds);
 			
-			size_t tsLen = MIN(24-1, len);
+			size_t tsLen = (size_t)MIN(24-1, len);
 			
 			// Calculate thread ID
 			// 
@@ -1293,7 +1293,7 @@ static DDTTYLogger *sharedInstance;
 			char tid[9];
 			len = snprintf(tid, 9, "%x", logMessage->machThreadID);
 			
-			size_t tidLen = MIN(9-1, len);
+			size_t tidLen = (size_t)MIN(9-1, len);
 			
 			// Here is our format: "%s %s[%i:%s] %s", timestamp, appName, processID, threadID, logMsg
 			
@@ -1423,7 +1423,7 @@ static DDTTYLogger *sharedInstance;
 			const char *escapeSeq = XCODE_COLORS_ESCAPE_SEQ;
 			
 			int result = snprintf(fgCode, 24, "%sfg%u,%u,%u;", escapeSeq, fg_r, fg_g, fg_b);
-			fgCodeLen = MIN(result, (24-1));
+			fgCodeLen = (size_t)MIN(result, (24-1));
 		}
 		else
 		{
@@ -1458,7 +1458,7 @@ static DDTTYLogger *sharedInstance;
 			const char *escapeSeq = XCODE_COLORS_ESCAPE_SEQ;
 			
 			int result = snprintf(bgCode, 24, "%sbg%u,%u,%u;", escapeSeq, bg_r, bg_g, bg_b);
-			bgCodeLen = MIN(result, (24-1));
+			bgCodeLen = (size_t)MIN(result, (24-1));
 		}
 		else
 		{
@@ -1470,11 +1470,11 @@ static DDTTYLogger *sharedInstance;
 		
 		if (isaColorTTY)
 		{
-			resetCodeLen = snprintf(resetCode, 8, "\033[0m");
+			resetCodeLen = (size_t)snprintf(resetCode, 8, "\033[0m");
 		}
 		else if (isaXcodeColorTTY)
 		{
-			resetCodeLen = snprintf(resetCode, 8, XCODE_COLORS_RESET);
+			resetCodeLen = (size_t)snprintf(resetCode, 8, XCODE_COLORS_RESET);
 		}
 		else
 		{
