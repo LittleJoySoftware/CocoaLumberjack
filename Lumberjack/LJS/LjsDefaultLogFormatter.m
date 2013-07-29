@@ -26,8 +26,30 @@
 #warning This file must be compiled with ARC. Use -fobjc-arc flag (or convert project to ARC).
 #endif
 
-#import "LjsDefaultFormatter.h"
+#import "LjsDefaultLogFormatter.h"
 #import "LjsLog.h"
+
+
+static NSString *const kFormatString_dated = @"%@ %@ %@: %s %i - %@";
+static NSString *const kDateFormat = @"yyyy-MM-dd HH:mm:ss.SSS";
+
+
+static NSString * const k_ljs_error_log = @"ERROR";
+static NSString * const k_ljs_fatal_log = @"FATAL";
+static NSString * const k_ljs_warn_log  = @" WARN";
+static NSString * const k_ljs_note_log  = @" NOTE";
+static NSString * const k_ljs_info_log  = @" INFO";
+static NSString * const k_ljs_debug_log = @"DEBUG";
+static NSString * const k_ljs_some_log  = @"  LOG";
+
+
+
+@interface LjsDefaultLogFormatter ()
+
+@property (nonatomic, strong) NSDateFormatter *dateFormatter;
+
+@end
+
 
 /**
  A verbose formatter for use with CocoaLumberjackLogging framework.
@@ -36,15 +58,10 @@
  
  See LjsLog.h for details about log level.
  */
-@implementation LjsDefaultFormatter
+@implementation LjsDefaultLogFormatter
 
-static NSString * const ERROR_LOG = @"ERROR";
-static NSString * const FATAL_LOG = @"FATAL";
-static NSString * const WARN_LOG  = @" WARN";
-static NSString * const NOTE_LOG  = @" NOTE";
-static NSString * const INFO_LOG  = @" INFO";
-static NSString * const DEBUG_LOG = @"DEBUG";
-static NSString * const SOME_LOG  = @"  LOG";
+@synthesize dateFormatter = _dateFormatter;
+
 
 // strange, but using this seems to occassionally create
 // dates that are not formated correctly
@@ -60,13 +77,11 @@ static NSString * const SOME_LOG  = @"  LOG";
 - (id) init {
 	self = [super init];
 	if (self != nil) {
-		self.dateFormatter = [[NSDateFormatter alloc] init];
-    [self.dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss.SSS"];
-    self.formatString = @"%@ %@ %@: %s %i - %@";
+    _dateFormatter = [[NSDateFormatter alloc] init];
+    [_dateFormatter setDateFormat:kDateFormat];
   }
 	return self;
 }
-
 
 /** @name Format Log Message */
 /**
@@ -74,35 +89,43 @@ static NSString * const SOME_LOG  = @"  LOG";
  @return a formatted log message
  @param logMessage the log message to format
  */
-- (NSString *)formatLogMessage:(DDLogMessage *)logMessage {
+- (NSString *) formatLogMessage:(DDLogMessage *)logMessage {
 	
   NSString *level;
 	switch (logMessage->logFlag) {
     case LOG_FLAG_FATAL:
-      level = FATAL_LOG;
+      level = k_ljs_fatal_log;
       break;
     case LOG_FLAG_ERROR:
-			level = ERROR_LOG;
+			level = k_ljs_error_log;
 			break;
 		case LOG_FLAG_WARN:
-			level = WARN_LOG;
+			level = k_ljs_warn_log;
 			break;
 		case LOG_FLAG_NOTICE:
-			level = NOTE_LOG;
+			level = k_ljs_note_log;
 			break;
     case LOG_FLAG_INFO:
-			level = INFO_LOG;
+			level = k_ljs_info_log;
 			break;
     case LOG_FLAG_DEBUG:
-			level = DEBUG_LOG;
+			level = k_ljs_debug_log;
 			break;
 		default:
-			level = SOME_LOG;
+			level = k_ljs_some_log;
 			break;
 	}
   
+  NSString *dateStr = [_dateFormatter stringFromDate:(logMessage->timestamp)];
+    return [NSString stringWithFormat:kFormatString_dated,
+            dateStr,
+            level, [logMessage fileName], logMessage->function,
+            logMessage->lineNumber, logMessage->logMsg];
   
-  NSString *dateStr = [self.dateFormatter stringFromDate:(logMessage->timestamp)];
+  
+  /*
+  ancient - hopefully will never need this again
+  NSString *dateStr =
   // fixes a problem where by dates are sometimes incorrectly formated
   if ([dateStr length] != 23) {
     //NSDate *thedate = logMessage->timestamp;
@@ -110,11 +133,8 @@ static NSString * const SOME_LOG  = @"  LOG";
     dateStr = [self.dateFormatter stringFromDate:(logMessage->timestamp)];
     //NSLog(@"CORRECTED: %@ ==> %@ for %@", oldDateStr, dateStr, thedate);
   }
-  
-  return [NSString stringWithFormat:self.formatString,
-          dateStr, 
-          level, [logMessage fileName], logMessage->function, 
-          logMessage->lineNumber, logMessage->logMsg];
+   */
+ 
 }
 
 
