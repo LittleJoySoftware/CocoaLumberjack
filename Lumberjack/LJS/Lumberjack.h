@@ -27,7 +27,7 @@
 #import "DDASLLogger.h"
 #import "DDFileLogger.h"
 #import "DDTTYLogger.h"
-#import "LjsDefaultFormatter.h"
+#import "LjsDefaultLogFormatter.h"
 #import "LjsLogFileManager.h"
 #import "DDFileLogger+CurrentFile.h"
 #import "ContextFilterLogFormatter.h"

@@ -26,7 +26,7 @@
 #warning This file must be compiled with ARC. Use -fobjc-arc flag (or convert project to ARC).
 #endif
 
-#import "LjsDefaultFormatter.h"
+#import "LjsDefaultLogFormatter.h"
 #import "LjsLog.h"
 
 /**
@@ -36,7 +36,7 @@
  
  See LjsLog.h for details about log level.
  */
-@implementation LjsDefaultFormatter
+@implementation LjsDefaultLogFormatter
 
 static NSString * const ERROR_LOG = @"ERROR";
 static NSString * const FATAL_LOG = @"FATAL";

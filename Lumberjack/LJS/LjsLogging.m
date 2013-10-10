@@ -52,12 +52,12 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 + (void) startLoggingWithASL:(BOOL) aDoASL
              withFileLogging:(BOOL) aDoFileLogging {
-  LjsDefaultFormatter *ttyFmter = [LjsDefaultFormatter new];
+  LjsDefaultLogFormatter *ttyFmter = [LjsDefaultLogFormatter new];
   [[DDTTYLogger sharedInstance] setLogFormatter:ttyFmter];
   [DDLog addLogger:[DDTTYLogger sharedInstance]];
   
   if (aDoASL == YES) {
-    LjsDefaultFormatter *aslFmtet = [LjsDefaultFormatter new];
+    LjsDefaultLogFormatter *aslFmtet = [LjsDefaultLogFormatter new];
     [[DDASLLogger sharedInstance] setLogFormatter:aslFmtet];
     [DDLog addLogger:[DDASLLogger sharedInstance]];
   }
@@ -65,7 +65,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
   if (aDoFileLogging == YES) {
     LjsLogFileManager *fileManager = [LjsLogFileManager new];
     DDFileLogger *fileLogger = [[DDFileLogger alloc] initWithLogFileManager:fileManager];
-    LjsDefaultFormatter *logFmter = [LjsDefaultFormatter new];
+    LjsDefaultLogFormatter *logFmter = [LjsDefaultLogFormatter new];
     [fileLogger setLogFormatter:logFmter];
     fileLogger.maximumFileSize = 1024 * 1024;
     fileLogger.rollingFrequency = 60 * 60 * 24;

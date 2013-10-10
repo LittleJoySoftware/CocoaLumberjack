@@ -26,7 +26,7 @@
 #import <Foundation/Foundation.h>
 #import "DDLog.h"
 
-@interface LjsDefaultFormatter : NSObject <DDLogFormatter>
+@interface LjsDefaultLogFormatter : NSObject <DDLogFormatter>
 
 /** @name Properties */
 /**
