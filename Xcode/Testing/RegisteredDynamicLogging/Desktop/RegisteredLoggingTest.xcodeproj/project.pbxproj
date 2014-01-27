@@ -20,8 +20,8 @@
 		DCA67D5A146B4ADA003411EE /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = DCA67D4D146B4ADA003411EE /* DDFileLogger.m */; };
 		DCA67D5B146B4ADA003411EE /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = DCA67D4F146B4ADA003411EE /* DDLog.m */; };
 		DCA67D5C146B4ADA003411EE /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = DCA67D51146B4ADA003411EE /* DDTTYLogger.m */; };
-		DCA67D5D146B4ADA003411EE /* ContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = DCA67D54146B4ADA003411EE /* ContextFilterLogFormatter.m */; };
-		DCA67D5E146B4ADA003411EE /* DispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = DCA67D56146B4ADA003411EE /* DispatchQueueLogFormatter.m */; };
+		DCA67D5D146B4ADA003411EE /* DDContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = DCA67D54146B4ADA003411EE /* DDContextFilterLogFormatter.m */; };
+		DCA67D5E146B4ADA003411EE /* DDDispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = DCA67D56146B4ADA003411EE /* DDDispatchQueueLogFormatter.m */; };
 		DCA67D5F146B4ADA003411EE /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = DCA67D57146B4ADA003411EE /* README.txt */; };
 /* End PBXBuildFile section */
 
@@ -53,10 +53,10 @@
 		DCA67D4F146B4ADA003411EE /* DDLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDLog.m; path = ../../../../Lumberjack/DDLog.m; sourceTree = "<group>"; };
 		DCA67D50146B4ADA003411EE /* DDTTYLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDTTYLogger.h; path = ../../../../Lumberjack/DDTTYLogger.h; sourceTree = "<group>"; };
 		DCA67D51146B4ADA003411EE /* DDTTYLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDTTYLogger.m; path = ../../../../Lumberjack/DDTTYLogger.m; sourceTree = "<group>"; };
-		DCA67D53146B4ADA003411EE /* ContextFilterLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContextFilterLogFormatter.h; sourceTree = "<group>"; };
-		DCA67D54146B4ADA003411EE /* ContextFilterLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContextFilterLogFormatter.m; sourceTree = "<group>"; };
-		DCA67D55146B4ADA003411EE /* DispatchQueueLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DispatchQueueLogFormatter.h; sourceTree = "<group>"; };
-		DCA67D56146B4ADA003411EE /* DispatchQueueLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DispatchQueueLogFormatter.m; sourceTree = "<group>"; };
+		DCA67D53146B4ADA003411EE /* DDContextFilterLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDContextFilterLogFormatter.h; sourceTree = "<group>"; };
+		DCA67D54146B4ADA003411EE /* DDContextFilterLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDContextFilterLogFormatter.m; sourceTree = "<group>"; };
+		DCA67D55146B4ADA003411EE /* DDDispatchQueueLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDDispatchQueueLogFormatter.h; sourceTree = "<group>"; };
+		DCA67D56146B4ADA003411EE /* DDDispatchQueueLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDispatchQueueLogFormatter.m; sourceTree = "<group>"; };
 		DCA67D57146B4ADA003411EE /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,10 +157,10 @@
 		DCA67D52146B4ADA003411EE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				DCA67D53146B4ADA003411EE /* ContextFilterLogFormatter.h */,
-				DCA67D54146B4ADA003411EE /* ContextFilterLogFormatter.m */,
-				DCA67D55146B4ADA003411EE /* DispatchQueueLogFormatter.h */,
-				DCA67D56146B4ADA003411EE /* DispatchQueueLogFormatter.m */,
+				DCA67D53146B4ADA003411EE /* DDContextFilterLogFormatter.h */,
+				DCA67D54146B4ADA003411EE /* DDContextFilterLogFormatter.m */,
+				DCA67D55146B4ADA003411EE /* DDDispatchQueueLogFormatter.h */,
+				DCA67D56146B4ADA003411EE /* DDDispatchQueueLogFormatter.m */,
 				DCA67D57146B4ADA003411EE /* README.txt */,
 			);
 			name = Extensions;
@@ -193,7 +193,7 @@
 		DC7DC4E014154E4900601B40 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0500;
 			};
 			buildConfigurationList = DC7DC4E314154E4900601B40 /* Build configuration list for PBXProject "RegisteredLoggingTest" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -240,8 +240,8 @@
 				DCA67D5A146B4ADA003411EE /* DDFileLogger.m in Sources */,
 				DCA67D5B146B4ADA003411EE /* DDLog.m in Sources */,
 				DCA67D5C146B4ADA003411EE /* DDTTYLogger.m in Sources */,
-				DCA67D5D146B4ADA003411EE /* ContextFilterLogFormatter.m in Sources */,
-				DCA67D5E146B4ADA003411EE /* DispatchQueueLogFormatter.m in Sources */,
+				DCA67D5D146B4ADA003411EE /* DDContextFilterLogFormatter.m in Sources */,
+				DCA67D5E146B4ADA003411EE /* DDDispatchQueueLogFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,9 +279,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -299,7 +300,9 @@
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
@@ -311,9 +314,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -325,7 +329,9 @@
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				SDKROOT = macosx;
@@ -335,6 +341,7 @@
 		DC7DC50814154E4900601B40 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RegisteredLoggingTest/RegisteredLoggingTest-Prefix.pch";
 				INFOPLIST_FILE = "RegisteredLoggingTest/RegisteredLoggingTest-Info.plist";
@@ -346,6 +353,7 @@
 		DC7DC50914154E4900601B40 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RegisteredLoggingTest/RegisteredLoggingTest-Prefix.pch";
 				INFOPLIST_FILE = "RegisteredLoggingTest/RegisteredLoggingTest-Info.plist";
