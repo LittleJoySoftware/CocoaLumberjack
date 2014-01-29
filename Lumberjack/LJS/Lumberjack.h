@@ -23,7 +23,6 @@
 // IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "DDLog.h"
-#import "LjsLog.h"
 #import "DDASLLogger.h"
 #import "DDFileLogger.h"
 #import "DDTTYLogger.h"

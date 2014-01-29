@@ -27,7 +27,8 @@
 #endif
 
 #import "LjsDefaultLogFormatter.h"
-#import "LjsLog.h"
+#import "DDLog.h"
+//#import "LjsLog.h"
 
 /**
  A verbose formatter for use with CocoaLumberjackLogging framework.
@@ -39,9 +40,7 @@
 @implementation LjsDefaultLogFormatter
 
 static NSString * const ERROR_LOG = @"ERROR";
-static NSString * const FATAL_LOG = @"FATAL";
 static NSString * const WARN_LOG  = @" WARN";
-static NSString * const NOTE_LOG  = @" NOTE";
 static NSString * const INFO_LOG  = @" INFO";
 static NSString * const DEBUG_LOG = @"DEBUG";
 static NSString * const SOME_LOG  = @"  LOG";
@@ -78,17 +77,11 @@ static NSString * const SOME_LOG  = @"  LOG";
 	
   NSString *level;
 	switch (logMessage->logFlag) {
-    case LOG_FLAG_FATAL:
-      level = FATAL_LOG;
-      break;
     case LOG_FLAG_ERROR:
 			level = ERROR_LOG;
 			break;
 		case LOG_FLAG_WARN:
 			level = WARN_LOG;
-			break;
-		case LOG_FLAG_NOTICE:
-			level = NOTE_LOG;
 			break;
     case LOG_FLAG_INFO:
 			level = INFO_LOG;
